@@ -1,28 +1,42 @@
 // question 4 b part: multiplication of 2 matrices
+#include <iostream>
+using namespace std;
 
+int main(){
+    int m, n, p;
+    cout << "Enter rows and cols of first matrix (m n): ";
+    cin >> m >> n;
+    cout << "Enter cols of second matrix (p): ";
+    cin >> p;
 
-#include <stdio.h>
-int main() {
+    int A[m][n], B[n][p], C[m][p] = {0};
 
-    int a[10][10], b[10][10], c[10][10], n, m, p, q, i, j, k;
-    scanf("%d%d", &n, &m);
-
-    for (i = 0; i < n; i++) for (j = 0; j < m; j++) scanf("%d", &a[i][j]);
-    scanf("%d%d", &p, &q);
-
-    for (i = 0; i < p; i++) for (j = 0; j < q; j++) scanf("%d", &b[i][j]);
-    if (m != p) return 0;
-
-    for (i = 0; i < n; i++) for (j = 0; j < q; j++) {
-        c[i][j] = 0;
-
-
-        
-        for (k = 0; k < m; k++) c[i][j] += a[i][k] * b[k][j];
+    cout << "Enter first matrix elements:\n";
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> A[i][j];
+        }
     }
-    for (i = 0; i < n; i++) {
-        for (j = 0; j < q; j++) printf("%d ", c[i][j]);
-        printf("\n");
+
+    cout << "Enter second matrix elements:\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < p; j++) {
+            cin >> B[i][j];
+        }
     }
-    return 0;
+
+    //multipication
+    for(int i=0; i<m; i++){
+        for (int j=0; j<p; j++){
+            for(int k=0; k<n; k++){
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+    for(int i = 0; i<m; i++){
+        for(int j=0; j<p; j++){
+            cout<<C[i][j]<<" ";
+        }
+        cout<<endl;
+    }
 }
